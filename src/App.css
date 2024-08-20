@@ -1,0 +1,21 @@
+.react-flow {
+    --edge-stroke-default: red;
+    --connectionline-stroke-default: red;
+    --selection-background-color: red;
+    --selection-border: red;
+}
+
+.react-flow__selectionpane {
+    --selection-background-color: red;
+    --selection-border: red;
+}
+
+.react-flow__selection {
+    --selection-background-color: red;
+    --selection-border: red;
+}
+
+.react-flow__edge {
+    --edge-stroke-default: red;
+    --connectionline-stroke-default: red;
+}
