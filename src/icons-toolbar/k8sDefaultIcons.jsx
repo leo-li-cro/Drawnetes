@@ -1,5 +1,5 @@
 
 
-const defaultIcons = ['pod','deploy','svc','cronjob','ing'];
+const defaultIcons = ['deployment','service','persistent volume','ingress','job'];
 
 export default defaultIcons;

@@ -1,8 +1,6 @@
 import React from 'react';
 
 function SetTimer({ inputTime, setInputTime }) {
-  //const [minutes, setMinutes] = useState("00");
-  //const [seconds, setSeconds] = useState("00");
 
   const seconds = +inputTime % 60;
   const minutes = Math.floor(+inputTime / 60);
@@ -21,16 +19,6 @@ function SetTimer({ inputTime, setInputTime }) {
     }
   };
 
-  const formatTime = (time) => {
-    if (isOneDigit(time))
-      return '0' + time;
-    return time;
-  }
-
-  const isOneDigit = (number) => {
-    return String(number).charAt(0) == number;
-  }
-
   return (
     <div className='text-3xl flex justify-center'>
       <input
@@ -38,7 +26,7 @@ function SetTimer({ inputTime, setInputTime }) {
         maxLength="2"
         inputMode="numeric"
         aria-label="Minutes input"
-        value={formatTime(minutes)}
+        value={minutes}
         onChange={handleMinutesChange}
         style={{
           width: '3rem',
@@ -54,7 +42,7 @@ function SetTimer({ inputTime, setInputTime }) {
         maxLength="2"
         inputMode="numeric"
         aria-label="Seconds input"
-        value={formatTime(seconds)}
+        value={seconds}
         onChange={handleSecondsChange}
         style={{
           width: '3rem',

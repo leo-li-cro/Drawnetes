@@ -3,18 +3,16 @@ import defaultIcons from './icons-toolbar/k8sDefaultIcons';
 
 const GlobalContext = createContext();
 
-// Custom hook to use the IconContext
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export const GlobalProvider = ({ children }) => {
-  const [searchResults, setSearchResults]
-  = useState(defaultIcons);
-  const [selectedNodeId, setSelectedNodeId] = useState(null);
+  const [searchResults, setSearchResults] = useState(defaultIcons);
+  const [selectedNodeTooltipId, setSelectedNodeTooltipId] = useState(null);
 
   return (
     <GlobalContext.Provider value={{
       searchResults, setSearchResults,
-      selectedNodeId, setSelectedNodeId
+      selectedNodeTooltipId, setSelectedNodeTooltipId
      }}>
       {children}
     </GlobalContext.Provider>

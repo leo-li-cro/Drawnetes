@@ -2,6 +2,7 @@
   "name": "my-react-flow-app",
   "private": true,
   "version": "0.0.0",
+  "author": "Leo Li",
   "type": "module",
   "scripts": {
     "tw:build": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",

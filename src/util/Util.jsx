@@ -1,31 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PlayPauseButton from './PlayPauseButton.jsx';
-import SetTimer from './SetTimer.jsx';
 import { useUtilContext } from './UtilContext.jsx';
 
 function Util() {
-  const [isAudioExpanded, setIsAudioExpanded] = useState(false);
-  const [isTimerExpanded, setIsTimerExpanded] = useState(false);
-
-  const musicFiles = [
-    'lofi-summer-rain.mp3',
-    'lofi-good-night.mp3',
-    'lofi-for-a-dream.mp3',
-  ];
-
-  // Audio
-  const [volume, setVolume] = useState(0.5);
 
   const { isExpanded, setIsExpanded,
           audioRef, isPlaying, setIsPlaying,
-          timeLeft, setTimeLeft, currentTrack, setCurrentTrack
+          timeLeft, setTimeLeft, currentTrack
    } = useUtilContext();
-
-  //const audioRef = useRef(null);
-
-  // Timer
-  const [inputTime, setInputTime] = useState(0); 
-  const [isRunning, setIsRunning] = useState(false); // Timer running state
+   
+  const [isRunning, setIsRunning] = useState(false);
   const countdownIntervalRef = useRef(null);
   const endSoundRef = useRef(new Audio('audio/alarm-ringtone.mp3'));
 
@@ -43,34 +27,17 @@ function Util() {
     setIsPlaying(false);
   };
 
-  const handleVolumeChange = (event) => {
-    const newVolume = parseFloat(event.target.value);
-    setVolume(newVolume);
-    audioRef.current.volume = newVolume;
-  };
-
-  const handleTrackChange = (event) => {
-    setCurrentTrack(event.target.value);
-    if (audioRef.current) {
-      audioRef.current.load();
-      if (isPlaying)
-        playAudio();
-    }
-  };
-
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
-      // Start countdown interval if running
       countdownIntervalRef.current = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeLeft === 0 && isRunning) {
-      // Play sound when timer reaches zero
       endSoundRef.current.play();
       setIsRunning(false);
     }
     return () => clearInterval(countdownIntervalRef.current);
-  }, [isRunning, timeLeft]);
+  }, [isRunning, timeLeft, setTimeLeft]);
 
   const toggleTimer = () => {
     isRunning ? pauseTimer() : startTimer();
@@ -93,23 +60,6 @@ function Util() {
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
-
-  const handleInputChange = (event) => {
-    const value = parseInt(event.target.value, 10);
-    if (!isNaN(value)) {
-      setInputTime(value);
-    }
-  };
-
-  const resetTimer = () => {
-    if (inputTime > 0) {
-      setTimeLeft(inputTime);
-    }
-  };
-
-  const addOneMin = () => {
-    setInputTime(+inputTime + 60);
-  }
 
   return (
     <>

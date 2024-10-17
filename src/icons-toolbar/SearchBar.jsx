@@ -7,7 +7,7 @@ import defaultIcons from './k8sDefaultIcons';
 const icons = iconMetadata;
 const options = {
     keys: ["name"],
-    threshold: 0.5 // [0-1] lower threshold equates to more strict search
+    threshold: 0.75 // [0-1] lower threshold equates to more strict search
 }
 
 const fuse = new Fuse(icons, options);

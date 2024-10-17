@@ -4,12 +4,11 @@ import { useUtilContext } from './UtilContext.jsx';
 import SetTimer from './SetTimer.jsx';
 
 function SetUtil() {
-    // Audio
     const [volume, setVolume] = useState(0.5);
 
-    const { isExpanded, setIsExpanded,
+    const { isExpanded,
             audioRef, isPlaying, setIsPlaying,
-            timeLeft, setTimeLeft, currentTrack, setCurrentTrack
+            setTimeLeft, currentTrack, setCurrentTrack
      } = useUtilContext();
 
     const musicFiles = [
@@ -18,7 +17,6 @@ function SetUtil() {
         'lofi-for-a-dream.mp3',
     ];
 
-    // Timer
     const [inputTime, setInputTime] = useState(0);
 
     const handleVolumeChange = (event) => {

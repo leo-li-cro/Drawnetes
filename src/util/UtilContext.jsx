@@ -6,12 +6,11 @@ export const useUtilContext = () => useContext(UtilContext);
 
 export const UtilProvider = ({ children }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    // Audio
+
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState('lofi-for-a-dream.mp3');
 
-    // Timer
     const [timeLeft, setTimeLeft] = useState(0);
 
     return (

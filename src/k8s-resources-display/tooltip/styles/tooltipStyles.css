@@ -1,0 +1,17 @@
+@layer utilities {
+    .no-spin {
+        /* Remove spin buttons for Webkit browsers (Chrome, Safari, Edge) */
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .no-spin::-webkit-outer-spin-button,
+    .no-spin::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Remove spin buttons for Firefox */
+    .no-spin {
+        -moz-appearance: textfield;
+    }
+}

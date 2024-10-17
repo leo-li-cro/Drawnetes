@@ -1,15 +1,12 @@
 import { useCallback } from 'react';
 import { useReactFlow } from "@xyflow/react";
-import { useGlobalContext } from '../GlobalContext';
 
 let nodeId = 1;
 
-function AddIconButton({ iconName, index }) {
+function AddIconButton({ iconName }) {
   const reactFlowInstance = useReactFlow();
-  const { searchResults } = useGlobalContext();
 
-  // Replace 'system-design' with 'k8s'
-  const imgSrc = `icons/k8s/${iconName}.png`;
+  const imgSrc = `icons/${iconName}.png`;
 
   const onClick = useCallback(() => {
     const id = `${nodeId++}`;
@@ -18,26 +15,26 @@ function AddIconButton({ iconName, index }) {
       id,
       type: 'icon',
       position: {
-        x: Math.random() * 400 + 200,
-        y: Math.random() * 400 + 200,
+        x: Math.random() * 500 + 500,
+        y: Math.random() * 200 + 300
       },
       data: {
-        label: `Node ${id}`,
-        name: iconName
+        resourceType: ""+iconName,
+        name: ""
       },
     };
     reactFlowInstance.addNodes(newNode);
-  }, [searchResults, reactFlowInstance]);
+  }, [reactFlowInstance, iconName]);
 
   return (
-    <div className='w-20 h-30 flex-1 bg-pink-600 text-white p-3 rounded text-center items-center'>
+    <div
+    className='w-20 h-30 flex-1 bg-pink-600 hover:bg-pink-500 text-white p-3 rounded text-center items-center cursor-pointer'
+    onClick={onClick}>
       <img
-        className='cursor-pointer'
         src={imgSrc}
         alt="icon"
-        onClick={onClick}
       />
-      <label className='block text-xs font-medium leading-tight pt-1'> { iconName } </label>
+      <label className='block text-xs font-medium leading-tight pt-1 cursor-pointer'> { iconName } </label>
     </div>
   );
 }
