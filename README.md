@@ -26,11 +26,13 @@ Drawnetes is a visual tool designed to facilitate the creation and management of
 
    ```bash
    npm install
-
+   ```
+   
 or
 
    ```bash
    yarn install
+   ```
 
 3. **Run the Development Server**
 
@@ -38,10 +40,12 @@ To start the development server, run:
 
    ```bash
    npm run dev
+   ```
 
 or
 
    ```bash
    yarn dev
+   ```
 
 The application should now be accessible at http://localhost:5173
