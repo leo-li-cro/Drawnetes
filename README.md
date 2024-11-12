@@ -2,6 +2,8 @@
 
 Drawnetes is a visual tool designed to facilitate the creation and management of Kubernetes resources. With an intuitive drag-and-drop interface and real-time display options, Drawnetes helps users visualize and manage Kubernetes components efficiently.
 
+![User interface](public/images/UI.png)
+
 ## Features
 
 - Visual representation of various Kubernetes resources
